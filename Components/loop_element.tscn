@@ -45,4 +45,5 @@ text = " > "
 autoplay = true
 
 [connection signal="pressed" from="ButtonMute" to="." method="_on_button_mute_pressed"]
+[connection signal="pressed" from="ButtonSolo" to="." method="_on_button_solo_pressed"]
 [connection signal="pressed" from="ButtonDelete" to="." method="_on_button_delete_pressed"]
