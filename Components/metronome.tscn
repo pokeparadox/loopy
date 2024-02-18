@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://x66rdtwt1cdv"]
+
+[ext_resource type="Script" path="res://Components/metronome.gd" id="1_lmtm4"]
+[ext_resource type="AudioStream" uid="uid://bd5djaargm7sk" path="res://Sounds/tick.sfxr" id="2_3v6sd"]
+[ext_resource type="AudioStream" uid="uid://b54inwheqtfci" path="res://Sounds/clap.sfxr" id="3_qmk4h"]
+
+[node name="Metronome" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = -1216.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_lmtm4")
+
+[node name="Button1" type="Button" parent="."]
+layout_mode = 2
+toggle_mode = true
+keep_pressed_outside = true
+text = "                                        "
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 2
+toggle_mode = true
+keep_pressed_outside = true
+text = "                                        "
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 2
+toggle_mode = true
+keep_pressed_outside = true
+text = "                                        "
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 2
+toggle_mode = true
+keep_pressed_outside = true
+text = "                                        "
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="AudioTick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3v6sd")
+
+[node name="AudioClap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qmk4h")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://plqi6u2s0jxt"]
+
+[ext_resource type="Script" path="res://Components/loop_element.gd" id="1_6vbir"]
+
+[node name="LoopElement" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1220.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6vbir")
+
+[node name="ButtonLeft" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = " < "
+
+[node name="ButtonMute" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = " M "
+
+[node name="ButtonSolo" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = " S "
+
+[node name="ButtonDelete" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = " X "
+
+[node name="LabelStatus" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Status"
+
+[node name="ButtonRight" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = " > "
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[connection signal="pressed" from="ButtonMute" to="." method="_on_button_mute_pressed"]
+[connection signal="pressed" from="ButtonDelete" to="." method="_on_button_delete_pressed"]

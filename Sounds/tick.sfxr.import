@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://bd5djaargm7sk"
+path="res://.godot/imported/tick.sfxr-52b4c35abb618d7ce43e524974a0353c.sample"
+
+[deps]
+
+source_file="res://Sounds/tick.sfxr"
+dest_files=["res://.godot/imported/tick.sfxr-52b4c35abb618d7ce43e524974a0353c.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://csesw5rc8xqct"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_fnk6e"]
+[ext_resource type="PackedScene" uid="uid://cik7d71sjm8s7" path="res://Components/bpm.tscn" id="2_wtj6b"]
+[ext_resource type="PackedScene" uid="uid://bdxyloff1kx2o" path="res://Components/sound_box_selector.tscn" id="2_ychc4"]
+[ext_resource type="Script" path="res://ButtonMicrophone.gd" id="4_xy210"]
+[ext_resource type="PackedScene" uid="uid://x66rdtwt1cdv" path="res://Components/metronome.tscn" id="5_smmeb"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_qgnpa"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fnk6e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="TitleMenu" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/TitleMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Looper"
+
+[node name="ButtonMenu" type="Button" parent="VBoxContainer/TitleMenu"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 34
+text = "  ...  "
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SoundBoxSelector" parent="VBoxContainer" instance=ExtResource("2_ychc4")]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Bpm" parent="VBoxContainer" instance=ExtResource("2_wtj6b")]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Metronome" parent="VBoxContainer" instance=ExtResource("5_smmeb")]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Loops" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottomButtons" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+alignment = 1
+
+[node name="ButtonNew" type="Button" parent="VBoxContainer/BottomButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "
+[New]
+ "
+
+[node name="ButtonMicrophone" type="Button" parent="VBoxContainer/BottomButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "
+[Record]
+ "
+script = ExtResource("4_xy210")
+
+[node name="AudioStreamRecord" type="AudioStreamPlayer" parent="VBoxContainer/BottomButtons/ButtonMicrophone"]
+stream = SubResource("AudioStreamMicrophone_qgnpa")
+autoplay = true
+mix_target = 2
+bus = &"Record"
+
+[connection signal="pressed" from="VBoxContainer/TitleMenu/ButtonMenu" to="." method="_on_button_menu_pressed"]
+[connection signal="bpm_changed" from="VBoxContainer/Bpm" to="." method="_on_bpm_bpm_changed"]
+[connection signal="current_beat" from="VBoxContainer/Metronome" to="." method="_on_metronome_current_beat"]
+[connection signal="button_down" from="VBoxContainer/BottomButtons/ButtonMicrophone" to="VBoxContainer/BottomButtons/ButtonMicrophone" method="_on_button_down"]
+[connection signal="finished_recording" from="VBoxContainer/BottomButtons/ButtonMicrophone" to="." method="_on_button_microphone_finished_recording"]

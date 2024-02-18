@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://b54inwheqtfci"
+path="res://.godot/imported/clap.sfxr-085c494dcdb8302ead4216fcf82a4a53.sample"
+
+[deps]
+
+source_file="res://Sounds/clap.sfxr"
+dest_files=["res://.godot/imported/clap.sfxr-085c494dcdb8302ead4216fcf82a4a53.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

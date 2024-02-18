@@ -1,0 +1,141 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfhu3nuoheo72"]
+
+[ext_resource type="Script" path="res://Components/SettingsDialog.gd" id="1_14lt8"]
+[ext_resource type="Texture2D" uid="uid://dssi3hqr14jfb" path="res://pirategames.png" id="2_ap86l"]
+[ext_resource type="Texture2D" uid="uid://i3liirmrjnji" path="res://godot.svg" id="3_rgov3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jr8ir"]
+load_path = "res://.godot/imported/icon.png-b5cf707f4ba91fefa5df60a746e02900.ctex"
+
+[node name="SettingsDialog" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_14lt8")
+
+[node name="TitleBar" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 32
+text = "Settings
+"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="TwitchChannel" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TwitchChannel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Twitch Channel:"
+
+[node name="LineEditTwitchChannel" type="LineEdit" parent="TwitchChannel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Channel Name"
+
+[node name="CheckBoxAutoLogin" type="CheckBox" parent="."]
+layout_mode = 2
+tooltip_text = "If this is unchecked you will have to return here to login."
+theme_override_font_sizes/font_size = 32
+text = "Login on startup"
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.1
+
+[node name="Credits" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxCredits" type="VBoxContainer" parent="Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreditsHeader" type="Label" parent="Credits/VBoxCredits"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Credits and 3rd Party Licenses:"
+
+[node name="Licenses" type="TextEdit" parent="Credits/VBoxCredits"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Sound Box GD (c) 2023
+Pirate Games
+Created By: PokeParadox
+Special Thanks: WolfWinnie and RubixPrism
+---
+Powered by GodotEngine
+---
+This project uses GIFT for Twitch integration:
+
+MIT License
+
+Copyright (c) 2019-2023 Max Kross
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"
+editable = false
+
+[node name="HSeparator3" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="PirateGamesLogo" type="Sprite2D" parent="."]
+position = Vector2(422, 380)
+texture = ExtResource("2_ap86l")
+
+[node name="GodotLogo" type="Sprite2D" parent="."]
+position = Vector2(243, 477)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_rgov3")
+
+[node name="GiftLogo" type="Sprite2D" parent="."]
+position = Vector2(138, 587)
+scale = Vector2(2, 2)
+texture = SubResource("CompressedTexture2D_jr8ir")
+
+[node name="SaveCancelButtons" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="ButtonSave" type="Button" parent="SaveCancelButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Save"
+
+[node name="ButtonCancel" type="Button" parent="SaveCancelButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Cancel"
+
+[connection signal="pressed" from="SaveCancelButtons/ButtonSave" to="." method="_on_button_save_pressed"]
+[connection signal="pressed" from="SaveCancelButtons/ButtonCancel" to="." method="_on_button_cancel_pressed"]
