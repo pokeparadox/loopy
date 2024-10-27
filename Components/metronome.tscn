@@ -1,45 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://x66rdtwt1cdv"]
+[gd_scene load_steps=5 format=3 uid="uid://x66rdtwt1cdv"]
 
 [ext_resource type="Script" path="res://Components/metronome.gd" id="1_lmtm4"]
 [ext_resource type="AudioStream" uid="uid://bd5djaargm7sk" path="res://Sounds/tick.sfxr" id="2_3v6sd"]
 [ext_resource type="AudioStream" uid="uid://b54inwheqtfci" path="res://Sounds/clap.sfxr" id="3_qmk4h"]
+[ext_resource type="PackedScene" uid="uid://c654u78tlg4sl" path="res://Components/bar.tscn" id="4_j4tkn"]
 
-[node name="Metronome" type="HBoxContainer"]
+[node name="Metronome" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 4.0
-offset_bottom = -1216.0
+offset_bottom = -1036.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_lmtm4")
-
-[node name="Button1" type="Button" parent="."]
-layout_mode = 2
-toggle_mode = true
-keep_pressed_outside = true
-text = "                                        "
-
-[node name="Button2" type="Button" parent="."]
-layout_mode = 2
-toggle_mode = true
-keep_pressed_outside = true
-text = "                                        "
-
-[node name="Button3" type="Button" parent="."]
-layout_mode = 2
-toggle_mode = true
-keep_pressed_outside = true
-text = "                                        "
-
-[node name="Button4" type="Button" parent="."]
-layout_mode = 2
-toggle_mode = true
-keep_pressed_outside = true
-text = "                                        "
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -49,5 +26,17 @@ stream = ExtResource("2_3v6sd")
 
 [node name="AudioClap" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qmk4h")
+
+[node name="Bar1" parent="." instance=ExtResource("4_j4tkn")]
+layout_mode = 2
+
+[node name="Bar2" parent="." instance=ExtResource("4_j4tkn")]
+layout_mode = 2
+
+[node name="Bar3" parent="." instance=ExtResource("4_j4tkn")]
+layout_mode = 2
+
+[node name="Bar4" parent="." instance=ExtResource("4_j4tkn")]
+layout_mode = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
